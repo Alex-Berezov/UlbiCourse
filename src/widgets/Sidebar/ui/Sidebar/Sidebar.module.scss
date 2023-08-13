@@ -1,5 +1,7 @@
 .Sidebar {
-  height: calc(100vh - var(--navbar-height));
+  height: calc(
+    100vh - var(--navbar-height) - (var(--page-wrapper-padding) * 2)
+  );
   width: var(--sidbar-width);
   background: var(--inverted-bg-color);
 
@@ -17,4 +19,8 @@
   display: flex;
   justify-content: center;
   width: 100%;
+
+  .lang {
+    margin-left: 15px;
+  }
 }
