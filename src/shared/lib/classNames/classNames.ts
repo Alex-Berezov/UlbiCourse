@@ -5,6 +5,11 @@ export const classNames = (
   mods: Mods = {},
   additional: string[] = []
 ): string => {
+  const some = cls
+    ? (mods = { some: 'some' })
+    : mods.length
+    ? {}
+    : { some2: 'some2' }
   return [
     cls,
     ...additional.filter(Boolean),
