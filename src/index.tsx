@@ -6,7 +6,7 @@ import { ThemeProvider } from 'app/providers/ThemeProviders'
 
 import 'shared/config/i18n/i18n'
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
+const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <BrowserRouter>
     <ThemeProvider>
