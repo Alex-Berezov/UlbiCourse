@@ -2,6 +2,7 @@ export default {
   env: {
     browser: true,
     es2021: true,
+    jest: true,
   },
   extends: ['plugin:react/recommended', 'standard-with-typescript'],
   overrides: [],
