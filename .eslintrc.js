@@ -26,5 +26,6 @@ export default {
     '@typescript-eslint/no-unused-expressions': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/naming-convention': 'off',
+    'max-length': ['error', { ignoreComments: true }],
   },
 }
