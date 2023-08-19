@@ -18,5 +18,7 @@
     "compilerOptions": {
       "module": "CommonJS"
     }
-  }
+  },
+  "files": ["./config/jest/setupTests.ts"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
 }
