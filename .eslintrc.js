@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   env: {
     browser: true,
     es2021: true,
@@ -8,14 +8,29 @@ export default {
   overrides: [],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: './tsconfig.json',
+    project: './tsconfig.eslint.json',
     ecmaVersion: 'latest',
     sourceType: 'module',
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
   },
   plugins: ['react'],
   rules: {
     'react/react-in-jsx-scope': 'off',
-    'react/jsx-indent': [2, { indentMode: 2, ignoreTernaryOperator: true }],
+    'indent': [
+      2,
+      2,
+      {
+        'SwitchCase': 0,
+        'flatTernaryExpressions': false,
+        'offsetTernaryExpressions': false,
+        'ignoreComments': false,
+      },
+    ],
+    'react/jsx-indent': [2, 2],
     '@typescript-eslint/consistent-type-imports': 'off',
     '@typescript-eslint/prefer-nullish-coalescing': 'off',
     '@typescript-eslint/strict-boolean-expressions': 'off',
@@ -26,6 +41,8 @@ export default {
     '@typescript-eslint/no-unused-expressions': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/naming-convention': 'off',
-    'max-length': ['error', { ignoreComments: true }],
+    'max-len': ['error', { ignoreComments: true }],
+    'semi': 'off',
+    '@typescript-eslint/semi': ['error'],
   },
 }

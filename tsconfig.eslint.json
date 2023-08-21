@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "config/**/*.ts",
+    "config/**/*.tsx",
+    "/webpack.config.ts",
+    "/.eslintrc.js",
+    "/.prettierrc",
+    "/.stylelintrc.json",
+    "/babel.config.js",
+    "/tsconfig.eslint.json",
+    "/tsconfig.json"
+  ]
+}

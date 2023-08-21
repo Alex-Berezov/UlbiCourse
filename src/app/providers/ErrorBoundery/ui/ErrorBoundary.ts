@@ -9,28 +9,28 @@ interface ErrorBoundaryState {
   hasError: boolean
 }
 
-function logErrorToMyService(error: Error, info: string) {
+function logErrorToMyService (error: Error, info: string) {
   console.error('Logging error to service:', error, info)
 }
 
 class ErrorBoundary extends React.Component<
-  ErrorBoundaryProps,
-  ErrorBoundaryState
+ErrorBoundaryProps,
+ErrorBoundaryState
 > {
-  constructor(props: ErrorBoundaryProps) {
+  constructor (props: ErrorBoundaryProps) {
     super(props)
     this.state = { hasError: false }
   }
 
-  static getDerivedStateFromError(_: any): ErrorBoundaryState {
+  static getDerivedStateFromError (_: any): ErrorBoundaryState {
     return { hasError: true }
   }
 
-  componentDidCatch(error: Error, info: React.ErrorInfo) {
+  componentDidCatch (error: Error, info: React.ErrorInfo) {
     logErrorToMyService(error, info.componentStack)
   }
 
-  render() {
+  render () {
     if (this.state.hasError) {
       return this.props.fallback
     }
