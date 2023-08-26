@@ -10,6 +10,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
+    project: './tsconfig.json',
   },
   settings: {
     react: {
@@ -19,17 +20,18 @@ module.exports = {
   plugins: ['react'],
   rules: {
     'react/react-in-jsx-scope': 'off',
-    'indent': [
+    indent: [
       2,
       2,
       {
-        'SwitchCase': 0,
-        'flatTernaryExpressions': false,
-        'offsetTernaryExpressions': false,
-        'ignoreComments': false,
+        SwitchCase: 0,
+        flatTernaryExpressions: false,
+        offsetTernaryExpressions: false,
+        ignoreComments: false,
       },
     ],
     'react/jsx-indent': [2, 2],
+    'react/jsx-indent-props': [2, 2],
     '@typescript-eslint/consistent-type-imports': 'off',
     '@typescript-eslint/prefer-nullish-coalescing': 'off',
     '@typescript-eslint/strict-boolean-expressions': 'off',
@@ -41,7 +43,10 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/naming-convention': 'off',
     'max-len': ['error', { ignoreComments: true }],
-    'semi': 'off',
+    semi: 'off',
     '@typescript-eslint/semi': ['error'],
+    'no-console': 'warn',
+    'import/extansions': 'off',
+    'import/no-extraneous-dependencies': 'off',
   },
 }
