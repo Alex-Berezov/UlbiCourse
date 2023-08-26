@@ -8,7 +8,6 @@ module.exports = {
   overrides: [],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: './tsconfig.eslint.json',
     ecmaVersion: 'latest',
     sourceType: 'module',
   },

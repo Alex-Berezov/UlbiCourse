@@ -1,12 +1,6 @@
-/**
- * For a detailed explanation regarding each configuration property, visit:
- * https://jestjs.io/docs/configuration
- */
-
-import type { Config } from 'jest'
 import path from 'path'
 
-const config: Config = {
+const config = {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -19,7 +13,7 @@ const config: Config = {
   // Automatically clear mock calls, instances, contexts and results before every test
   clearMocks: true,
   testEnvironment: 'jest-environment-jsdom',
-  coveragePathIgnorePatterns: ['\\\\node_modules\\\\'],
+  coveragePathIgnorePatterns: ['/node_modules/'],
   moduleFileExtensions: [
     'js',
     'mjs',
@@ -37,6 +31,9 @@ const config: Config = {
   moduleNameMapper: {
     '\\.s?css$': 'identity-obj-proxy',
     '\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+  },
+  transform: {
+    '^.+\\.tsx?$': 'babel-jest',
   },
 
   // Indicates whether the coverage information should be collected while executing the test
