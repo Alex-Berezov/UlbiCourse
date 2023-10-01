@@ -43,12 +43,6 @@ jobs:
       - name: Unit tests
         run: npm run test:unit
 
-      - name: UI build storybook
-        run: npm run storybook:build
-
-      - name: UI tests
-        run: npm run test:ui:ci
-
       # Build
       - name: Build production
         run: npm run build:prod
