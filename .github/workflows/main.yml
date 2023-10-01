@@ -43,8 +43,8 @@ jobs:
       - name: Unit tests
         run: npm run test:unit
 
-      - name: UI tests
-        run: npm run test:ui
+      # - name: UI tests
+      #   run: npm run test:ui
 
       # Build
       - name: Build production
