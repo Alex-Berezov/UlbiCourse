@@ -30,7 +30,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --force
 
       # Linting
       - name: ESLint
@@ -43,8 +43,8 @@ jobs:
       - name: Unit tests
         run: npm run test:unit
 
-      # - name: UI tests
-      #   run: npm run test:ui
+      - name: UI tests
+        run: npm run test:ui
 
       # Build
       - name: Build production
