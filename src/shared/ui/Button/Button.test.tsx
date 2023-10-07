@@ -1,19 +1,21 @@
-import React from 'react'
-import { render, screen } from '@testing-library/react'
-import { Button } from 'shared/ui/Button'
-import { ButtonTheme } from './Button'
+import { screen } from '@testing-library/react'
+import Button, { ButtonTheme } from './Button'
+import { renderWithProviders } from 'shared/config/tests/renderWithRouter'
 
 describe('Button', () => {
   test('Simple button test', () => {
-    render(<Button>some</Button>)
+    renderWithProviders(<Button>some</Button>)
 
-    expect(screen.getByText('some')).toBeInTheDocument()
+    const buttonText = screen.getByText('some')
+    expect(buttonText).toBeInTheDocument()
+    expect(buttonText.tagName).toBe('BUTTON')
   })
 
   test('Test clear theme', () => {
-    render(<Button theme={ButtonTheme.CLEAR}>some</Button>)
+    renderWithProviders(<Button theme={ButtonTheme.CLEAR}>some</Button>)
 
-    expect(screen.getByText('some')).toHaveClass('clear')
-    screen.debug()
+    const buttonText = screen.getByText('some')
+    expect(buttonText).toBeInTheDocument()
+    expect(buttonText).toHaveClass(ButtonTheme.CLEAR)
   })
 })
