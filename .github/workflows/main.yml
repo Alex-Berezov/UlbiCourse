@@ -35,13 +35,16 @@ jobs:
       # Linting
       - name: ESLint
         run: npm run lint
+        if: always()
 
       - name: StyleLint
         run: npm run stylelint
+        if: always()
 
       # Testing
       - name: Unit tests
         run: npm run test:unit
+        if: always()
 
       # Build
       - name: Build production
