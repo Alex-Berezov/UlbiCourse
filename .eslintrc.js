@@ -9,7 +9,14 @@ module.exports = {
     'standard-with-typescript',
     'plugin:storybook/recommended',
   ],
-  overrides: [],
+  overrides: [
+    {
+      files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
+      rules: {
+        'i18next/no-literal-string': 'off',
+      },
+    },
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
@@ -21,7 +28,7 @@ module.exports = {
       version: 'detect',
     },
   },
-  plugins: ['react'],
+  plugins: ['react', 'react-hooks'],
   rules: {
     'react/react-in-jsx-scope': 'off',
     indent: [
@@ -52,5 +59,8 @@ module.exports = {
     'no-console': 'warn',
     'import/extansions': 'off',
     'import/no-extraneous-dependencies': 'off',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'error',
+    'react/prop-types': 'off',
   },
 }

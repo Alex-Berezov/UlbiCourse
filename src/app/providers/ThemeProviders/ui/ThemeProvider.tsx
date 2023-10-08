@@ -1,4 +1,4 @@
-import { FC, useMemo, useState, ReactNode } from 'react'
+import { FC, useMemo, useState, ReactNode, useEffect } from 'react'
 import {
   LOCAL_STORAGE_THEME_KEY,
   Theme,
@@ -22,6 +22,11 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
     }),
     [theme]
   )
+
+  useEffect(() => {
+    document.body.classList.remove(Theme.LIGHT, Theme.DARK)
+    document.body.classList.add(theme)
+  }, [theme])
 
   return (
     <ThemeContext.Provider value={defaultProps}>

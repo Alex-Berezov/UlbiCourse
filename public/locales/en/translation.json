@@ -3,5 +3,6 @@
   "pageNotFound": "Page not found",
   "errorMsg": "An unexpected error has occurred",
   "reloadPage": "Reload the page",
-  "toggle": "toggle"
+  "toggle": "toggle",
+  "logIn": "logIn"
 }

@@ -19,7 +19,7 @@ export const WithClass: Story = {
   },
 }
 
-export const ClearLight: Story = {
+export const Clear: Story = {
   args: {
     children: 'Text',
     theme: ButtonTheme.CLEAR,
@@ -27,10 +27,10 @@ export const ClearLight: Story = {
   decorators: [ThemeDecorator(Theme.LIGHT)],
 }
 
-export const ClearDark: Story = {
+export const ClearInverted: Story = {
   args: {
     children: 'Text',
-    theme: ButtonTheme.CLEAR,
+    theme: ButtonTheme.CLEAR_INVERTED,
   },
   decorators: [ThemeDecorator(Theme.DARK)],
 }

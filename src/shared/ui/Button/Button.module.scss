@@ -4,9 +4,14 @@
   cursor: pointer;
 }
 
-.clear {
+.clear,
+.clearInverted {
   all: unset;
   cursor: pointer;
+}
+
+.clearInverted {
+  color: var(--inverted-primary-color);
 }
 
 .outlined {

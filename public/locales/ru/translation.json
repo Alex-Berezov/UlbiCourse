@@ -3,5 +3,6 @@
   "pageNotFound": "Страница не найдена",
   "errorMsg": "Произошла непредвиденная ошибка",
   "reloadPage": "Перезагрузить страницу",
-  "toggle": "toggle"
+  "toggle": "toggle",
+  "logIn": "Войти"
 }
