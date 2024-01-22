@@ -24,11 +24,11 @@
       }
     }
 
-    /* stylelint-disable-next-line property-no-vendor-prefix */
     .input:-webkit-autofill,
     .input:-webkit-autofill:hover,
     .input:-webkit-autofill:focus,
     .input:-webkit-autofill:active {
+      /* stylelint-disable-next-line property-no-vendor-prefix */
       -webkit-box-shadow: 0 0 0 30px var(--bg-color) inset !important;
       color: var(--primary-color);
     }
