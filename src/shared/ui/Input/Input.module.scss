@@ -17,13 +17,14 @@
       outline: none;
       border: none;
       background: transparent;
-      // color: var(--primary-color);
+      color: var(--primary-color);
 
       &:focus {
         border-bottom: 1px solid var(--primary-color);
       }
     }
 
+    /* stylelint-disable-next-line property-no-vendor-prefix */
     .input:-webkit-autofill,
     .input:-webkit-autofill:hover,
     .input:-webkit-autofill:focus,

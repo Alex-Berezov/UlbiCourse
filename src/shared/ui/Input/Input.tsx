@@ -41,7 +41,7 @@ const Input: FC<InputProps> = memo(function Input(props: InputProps) {
           className={cls.input}
           value={value}
           onChange={onChangeHandler}
-          autoComplete="off"
+          autoComplete="new-password"
           {...otherProps}
         />
       </div>
