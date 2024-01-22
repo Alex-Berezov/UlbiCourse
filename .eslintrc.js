@@ -64,5 +64,6 @@ module.exports = {
     'react/prop-types': 'off',
     'space-before-function-paren': 'off',
     '@typescript-eslint/space-before-function-paren': 'off',
+    '@typescript-eslint/indent': 'off',
   },
 }

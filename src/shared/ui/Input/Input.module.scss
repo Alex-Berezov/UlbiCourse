@@ -1,0 +1,35 @@
+.inputBlockWrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  width: 100%;
+
+  .placeholder {
+    margin-right: 5px;
+  }
+
+  .inputWrapper {
+    flex-grow: 1;
+    position: relative;
+
+    .input {
+      width: 100%;
+      outline: none;
+      border: none;
+      background: transparent;
+      // color: var(--primary-color);
+
+      &:focus {
+        border-bottom: 1px solid var(--primary-color);
+      }
+    }
+
+    .input:-webkit-autofill,
+    .input:-webkit-autofill:hover,
+    .input:-webkit-autofill:focus,
+    .input:-webkit-autofill:active {
+      -webkit-box-shadow: 0 0 0 30px var(--bg-color) inset !important;
+      color: var(--primary-color);
+    }
+  }
+}

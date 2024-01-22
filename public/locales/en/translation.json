@@ -4,5 +4,7 @@
   "errorMsg": "An unexpected error has occurred",
   "reloadPage": "Reload the page",
   "toggle": "toggle",
-  "logIn": "logIn"
+  "logIn": "LogIn",
+  "login": "Login",
+  "password": "Password"
 }
