@@ -4,7 +4,10 @@
   "errorMsg": "An unexpected error has occurred",
   "reloadPage": "Reload the page",
   "toggle": "toggle",
+  "authForm": "Auth form",
   "logIn": "LogIn",
+  "logOut": "LogOut",
   "login": "Login",
-  "password": "Password"
+  "password": "Password",
+  "authError": "Invalid login or password"
 }

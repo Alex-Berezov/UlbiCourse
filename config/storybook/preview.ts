@@ -3,6 +3,7 @@ import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator
 import { ThemeDecorator } from '../../src/shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProviders'
 import { withRouter } from 'storybook-addon-react-router-v6'
+import { TranslationDecorator } from 'shared/config/storybook/TranslationDecorator/TranslationDecorator'
 
 const preview: Preview = {
   parameters: {
@@ -13,7 +14,12 @@ const preview: Preview = {
         date: /Date$/,
       },
     },
-    decorators: [StyleDecorator, ThemeDecorator(Theme.LIGHT), withRouter],
+    decorators: [
+      StyleDecorator,
+      ThemeDecorator(Theme.LIGHT),
+      TranslationDecorator,
+      withRouter,
+    ],
   },
 }
 

@@ -1,4 +1,3 @@
-/* eslint-disable react/display-name */
 import { StoryFn } from '@storybook/react'
 import { Theme } from 'app/providers/ThemeProviders'
 import { ReactNode, useEffect } from 'react'

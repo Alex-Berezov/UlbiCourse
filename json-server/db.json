@@ -5,8 +5,8 @@
   "users": [
     {
       "id": 1,
-      "username": "admin",
-      "password": 123
+      "userName": "admin",
+      "password": "123"
     }
   ]
 }
