@@ -3,6 +3,7 @@ import { withRouter } from 'storybook-addon-react-router-v6'
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProviders'
 import Navbar from './Navbar'
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator'
 
 const meta = {
   title: 'widgets/Navbar',
@@ -17,12 +18,24 @@ export const Light: Story = {
   args: {
     className: 'test',
   },
-  decorators: [ThemeDecorator(Theme.LIGHT)],
+  decorators: [ThemeDecorator(Theme.LIGHT), StoreDecorator({})],
 }
 
 export const Dark: Story = {
   args: {
     className: 'test',
   },
-  decorators: [ThemeDecorator(Theme.DARK)],
+  decorators: [ThemeDecorator(Theme.DARK), StoreDecorator({})],
+}
+
+export const AuthNavbar: Story = {
+  args: {
+    className: 'test',
+  },
+  decorators: [
+    ThemeDecorator(Theme.DARK),
+    StoreDecorator({
+      user: { authData: {} },
+    }),
+  ],
 }
