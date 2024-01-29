@@ -66,5 +66,6 @@ module.exports = {
     '@typescript-eslint/space-before-function-paren': 'off',
     '@typescript-eslint/indent': 'off',
     'react/display-name': 'off',
+    '@typescript-eslint/no-dynamic-delete': 'off',
   },
 }

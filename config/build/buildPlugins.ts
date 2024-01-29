@@ -23,15 +23,16 @@ export const buildPlugins = ({
     }),
   ]
 
+  plugins.push(
+    new BundleAnalyzerPlugin({
+      openAnalyzer: false,
+      defaultSizes: 'parsed',
+    })
+  )
+
   if (isDev) {
     plugins.push(new webpack.HotModuleReplacementPlugin())
     plugins.push(new ReactRefreshWebpackPlugin())
-    plugins.push(
-      new BundleAnalyzerPlugin({
-        openAnalyzer: false,
-        defaultSizes: 'parsed',
-      })
-    )
   }
 
   return plugins

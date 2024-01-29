@@ -4,14 +4,15 @@ import { useTranslation } from 'react-i18next'
 import { Button } from 'shared/ui/Button'
 import { Input } from 'shared/ui/Input'
 import cls from './LoginForm.module.scss'
-import { useDispatch, useSelector } from 'react-redux'
-import { loginActions } from '../../model/slice/loginSlice'
+import { useDispatch, useSelector, useStore } from 'react-redux'
+import { loginActions, loginReducer } from '../../model/slice/loginSlice'
 import { getLoginState } from '../../model/selectors/getLoginState'
 import { loginByUserName } from '../../model/services/loginByUserName/loginByUserName'
 import { ButtonTheme } from 'shared/ui/Button/Button'
 import Text, { TextTheme } from 'shared/ui/Text/Text'
+import { ReduxStoreWithManager } from 'app/providers/StorePropvider'
 
-interface LoginFormProps {
+export interface LoginFormProps {
   className?: string
   isOpen?: boolean
 }
@@ -19,7 +20,17 @@ interface LoginFormProps {
 const LoginForm: FC<LoginFormProps> = ({ className, isOpen }) => {
   const { t } = useTranslation()
   const despatch = useDispatch<any>()
+  const store = useStore() as ReduxStoreWithManager
   const { userName, password, error, isLoading } = useSelector(getLoginState)
+
+  useEffect(() => {
+    store.reducerManager.add('loginForm', loginReducer)
+
+    return () => {
+      store.reducerManager.remove('loginForm')
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   useEffect(() => {
     if (!isOpen) {
