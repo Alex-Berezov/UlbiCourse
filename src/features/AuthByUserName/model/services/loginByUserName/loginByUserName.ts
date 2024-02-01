@@ -14,6 +14,9 @@ export const loginByUserName = createAsyncThunk<
   loginByUserNameProps,
   { rejectValue: string }
 >('login/loginByUserName', async (authData, thunkAPI) => {
+  console.log('====================================')
+  console.log('authData >>>', authData)
+  console.log('====================================')
   try {
     const response = await axios.post<User>(
       'http://localhost:8000/login',
@@ -23,6 +26,10 @@ export const loginByUserName = createAsyncThunk<
     if (!response.data) {
       throw new Error()
     }
+
+    console.log('====================================')
+    console.log('response.data', response.data)
+    console.log('====================================')
 
     localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(response.data))
     thunkAPI.dispatch(userActions.setAuthData(response.data))

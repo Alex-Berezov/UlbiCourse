@@ -1,10 +1,10 @@
 import {
   AnyAction,
-  EnhancedStore,
   ReducersMapObject,
   Reducer,
   CombinedState,
 } from '@reduxjs/toolkit'
+import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore'
 import { CounterSchema } from 'entities/Counter'
 import { UserSchema } from 'entities/User'
 import { loginSchema } from 'features/AuthByUserName'
@@ -26,6 +26,6 @@ export interface ReducerManager {
   remove: (key: string) => void
 }
 
-export interface ReduxStoreWithManager extends EnhancedStore<StateSchema> {
+export interface ReduxStoreWithManager extends ToolkitStore<StateSchema> {
   reducerManager: ReducerManager
 }
