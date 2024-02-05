@@ -1,28 +1,31 @@
-import { FC, useState } from 'react'
+import { FC, memo, useMemo, useState } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './Sidebar.module.scss'
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher'
 import { LangSwitcher } from 'widgets/LangSwitcher'
 import { Button } from 'shared/ui/Button'
 import { ButtonSize, ButtonTheme } from 'shared/ui/Button/Button'
-import { AppLink } from 'shared/ui/AppLink'
-import { RoutePath } from 'shared/config/routeConfig/routeConfig'
-import MainIcon from 'shared/assets/icons/main-20-20.svg'
-import AboutIcon from 'shared/assets/icons/about-20-20.svg'
-import { useTranslation } from 'react-i18next'
+import SidebarItem from '../SidebarItem/SidebarItem'
+import { SidebarItemType, SidebarItemsList } from '../../model/items'
 
 interface SidebarProps {
   className?: string
 }
 
-const Sidebar: FC<SidebarProps> = ({ className }) => {
-  const { t: tHome } = useTranslation('home')
-  const { t: tAbout } = useTranslation('about')
+const Sidebar: FC<SidebarProps> = memo(({ className }) => {
   const [collapsed, setCollapsed] = useState(false)
 
   const onToggle = () => {
     setCollapsed((prev) => !prev)
   }
+
+  const itemsList = useMemo(
+    () =>
+      SidebarItemsList.map((item: SidebarItemType) => (
+        <SidebarItem key={item.path} item={item} collapsed={collapsed} />
+      )),
+    [collapsed]
+  )
 
   return (
     <div
@@ -31,17 +34,7 @@ const Sidebar: FC<SidebarProps> = ({ className }) => {
         className,
       ])}
     >
-      <div className={cls.navItems}>
-        <AppLink to={RoutePath.main} className={classNames(cls.link)}>
-          <MainIcon className={cls.icon} />
-          <p className={cls.linkText}>{tHome('mainPage')}</p>
-        </AppLink>
-
-        <AppLink to={RoutePath.about} className={classNames(cls.link)}>
-          <AboutIcon className={cls.icon} />
-          <p className={cls.linkText}>{tAbout('aboutPage')}</p>
-        </AppLink>
-      </div>
+      <div className={cls.navItems}>{itemsList}</div>
 
       <Button
         className={cls.collapseBtn}
@@ -59,6 +52,6 @@ const Sidebar: FC<SidebarProps> = ({ className }) => {
       </div>
     </div>
   )
-}
+})
 
 export default Sidebar

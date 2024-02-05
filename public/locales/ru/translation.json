@@ -1,5 +1,8 @@
 {
   "language": "RU",
+  "mainPage": "Главная страница",
+  "aboutPage": "О сайте",
+  "profilePage": "Профиль",
   "pageNotFound": "Страница не найдена",
   "errorMsg": "Произошла непредвиденная ошибка",
   "reloadPage": "Перезагрузить страницу",
