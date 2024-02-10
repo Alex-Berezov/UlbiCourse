@@ -1,5 +1,6 @@
 import {
   AnyAction,
+  CombinedState,
   Reducer,
   ReducersMapObject,
   combineReducers,
@@ -17,35 +18,40 @@ export function createReducerManager(
   return {
     getReducerMap: () => reducers,
 
-    reduce: (state: StateSchema, action: AnyAction) => {
+    reduce: (
+      state: StateSchema | undefined,
+      action: AnyAction
+    ): CombinedState<StateSchema> => {
       if (keysToRemove.length > 0) {
-        state = { ...state }
+        // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
+        const newState: StateSchema = state ? { ...state } : ({} as StateSchema)
         for (const key of keysToRemove) {
-          delete state[key]
+          delete newState[key]
         }
         keysToRemove = []
+        return combinedReducer(newState, action)
       }
 
-      return combinedReducer(state, action)
+      return combinedReducer(state as StateSchema, action)
     },
 
-    add: (key: StateSchemaKeys, reducer: Reducer) => {
+    add: (key: keyof StateSchema, reducer: Reducer<any, AnyAction>) => {
       if (!key || reducers[key]) {
         return
       }
 
       reducers[key] = reducer
-
       combinedReducer = combineReducers(reducers)
     },
 
-    remove: (key: StateSchemaKeys) => {
-      if (!key || !reducers[key]) {
+    remove: (key: string) => {
+      const schemaKey = key as keyof StateSchema
+      if (!schemaKey || !reducers[schemaKey]) {
         return
       }
 
-      delete reducers[key]
-      keysToRemove.push(key)
+      delete reducers[schemaKey]
+      keysToRemove.push(schemaKey)
       combinedReducer = combineReducers(reducers)
     },
   }

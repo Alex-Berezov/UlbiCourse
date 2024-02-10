@@ -27,7 +27,7 @@ export interface ReducerManager {
   getReducerMap: () => ReducersMapObject<StateSchema>
   reduce: (state: StateSchema, action: AnyAction) => CombinedState<StateSchema>
   add: (key: StateSchemaKeys, reducer: Reducer) => void
-  remove: (key: string) => void
+  remove: (key: keyof StateSchema) => void
 }
 
 export interface ReduxStoreWithManager extends ToolkitStore<StateSchema> {
@@ -36,7 +36,7 @@ export interface ReduxStoreWithManager extends ToolkitStore<StateSchema> {
 
 export interface ThunkExtraArg {
   api: AxiosInstance
-  navigate: (to: To, options?: NavigateOptions) => void
+  navigate?: (to: To, options?: NavigateOptions) => void
 }
 
 export interface ThunkConfig<T> {

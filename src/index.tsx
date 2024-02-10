@@ -10,7 +10,9 @@ import 'app/styles/index.scss'
 
 import 'shared/config/i18n/i18n'
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
+const root = ReactDOM.createRoot(
+  document.getElementById('root') || document.createElement('div')
+)
 root.render(
   <BrowserRouter>
     <StoreProvider>
