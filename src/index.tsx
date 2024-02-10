@@ -12,8 +12,8 @@ import 'shared/config/i18n/i18n'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-  <StoreProvider>
-    <BrowserRouter>
+  <BrowserRouter>
+    <StoreProvider>
       <ErrorBoundary
         fallback={
           <Suspense fallback="">
@@ -25,6 +25,6 @@ root.render(
           <App />
         </ThemeProvider>
       </ErrorBoundary>
-    </BrowserRouter>
-  </StoreProvider>
+    </StoreProvider>
+  </BrowserRouter>
 )

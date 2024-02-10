@@ -17,6 +17,10 @@ module.exports = {
       },
     },
   ],
+  globals: {
+    __IS_DEV__: true,
+    __API__: true,
+  },
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
