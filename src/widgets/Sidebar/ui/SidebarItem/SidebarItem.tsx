@@ -1,4 +1,4 @@
-import { FC, memo } from 'react'
+import { FC } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import cls from './SidebarItem.module.scss'
 import { AppLink } from 'shared/ui/AppLink'
