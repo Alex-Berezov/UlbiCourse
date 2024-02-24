@@ -1,10 +1,10 @@
 import React, { FC, InputHTMLAttributes, memo } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
+import { Mods, classNames } from 'shared/lib/classNames/classNames'
 import cls from './Input.module.scss'
 
 type HTMLInputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
-  'value' | 'onChange'
+  'value' | 'onChange' | 'readOnly'
 >
 
 interface InputProps extends HTMLInputProps {
@@ -13,6 +13,7 @@ interface InputProps extends HTMLInputProps {
   value?: string
   onChange?: (value: string) => void
   placeholder?: string
+  readOnly?: boolean
 }
 
 const Input: FC<InputProps> = memo(function Input(props: InputProps) {
@@ -22,6 +23,7 @@ const Input: FC<InputProps> = memo(function Input(props: InputProps) {
     onChange,
     type = 'text',
     placeholder,
+    readOnly,
     ...otherProps
   } = props
 
@@ -29,8 +31,12 @@ const Input: FC<InputProps> = memo(function Input(props: InputProps) {
     onChange?.(e.target.value)
   }
 
+  const mods: Mods = {
+    [cls.readOnly]: readOnly,
+  }
+
   return (
-    <div className={classNames(cls.inputBlockWrapper, {}, [className])}>
+    <div className={classNames(cls.inputBlockWrapper, mods, [className])}>
       {placeholder && (
         <div className={cls.placeholder}>{`${placeholder} >`}</div>
       )}
@@ -42,6 +48,7 @@ const Input: FC<InputProps> = memo(function Input(props: InputProps) {
           value={value}
           onChange={onChangeHandler}
           autoComplete="new-password"
+          readOnly={readOnly}
           {...otherProps}
         />
       </div>

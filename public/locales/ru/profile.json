@@ -2,5 +2,16 @@
   "profile": "Профиль",
   "editProfile": "Редактировать профиль",
   "firstName": "Имя",
-  "lastName": "Фамилия"
+  "lastName": "Фамилия",
+  "age": "Возраст",
+  "currency": "Валюта",
+  "country": "Страна",
+  "city": "Город",
+  "userName": "Логин",
+  "avatar": "Аватар",
+  "ProfileError": "Ошибка загрузки профиля",
+  "shouldReloadPage": "Пожалуйста, перезагрузите страницу",
+  "CancelEditProfile": "Отменить",
+  "SaveProfile": "Сохранить",
+  "ageError": "Возраст вне допустимого диапазона"
 }

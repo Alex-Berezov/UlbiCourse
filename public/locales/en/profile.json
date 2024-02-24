@@ -2,5 +2,16 @@
   "profile": "Profile",
   "editProfile": "Edit Profile",
   "firstName": "First Name",
-  "lastName": "Last Name"
+  "lastName": "Last Name",
+  "age": "Age",
+  "currency": "Currency",
+  "country": "Country",
+  "city": "City",
+  "userName": "Username",
+  "avatar": "Avatar",
+  "ProfileError": "Profile loading error",
+  "shouldReloadPage": "Please reload the page",
+  "CancelEditProfile": "Cancel",
+  "SaveProfile": "Save",
+  "ageError": "Age is out of range"
 }

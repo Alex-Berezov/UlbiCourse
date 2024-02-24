@@ -72,5 +72,6 @@ module.exports = {
     'react/display-name': 'off',
     '@typescript-eslint/no-dynamic-delete': 'off',
     'no-undef': 'off',
+    'multiline-ternary': 'off',
   },
 }

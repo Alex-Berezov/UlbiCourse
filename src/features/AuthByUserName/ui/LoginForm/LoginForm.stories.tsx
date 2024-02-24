@@ -4,10 +4,13 @@ import LoginForm from './LoginForm'
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator'
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProviders'
+import { withRouter } from 'storybook-addon-react-router-v6'
+import { StyleDecorator } from 'shared/config/storybook/StyleDecorator/StyleDecorator'
 
 const meta = {
   title: 'feature/LoginForm',
   component: LoginForm,
+  decorators: [withRouter, StyleDecorator],
 } satisfies Meta<typeof LoginForm>
 
 export default meta
