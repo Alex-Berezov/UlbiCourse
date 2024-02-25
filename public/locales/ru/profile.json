@@ -13,5 +13,12 @@
   "shouldReloadPage": "Пожалуйста, перезагрузите страницу",
   "CancelEditProfile": "Отменить",
   "SaveProfile": "Сохранить",
-  "ageError": "Возраст вне допустимого диапазона"
+  "ageError": "Возраст вне допустимого диапазона",
+  "ServerError": "Ошибка сервера",
+  "NoData": "Нет данных",
+  "IncorrectFirstName": "Некорректное имя",
+  "IncorrectLastName": "Некорректная фамилия",
+  "IncorrectAge": "Возраст должен быть целым числом от 18 до 99",
+  "IncorrectCity": "Некорректный город",
+  "IncorrectUserName": "Некорректный логин"
 }

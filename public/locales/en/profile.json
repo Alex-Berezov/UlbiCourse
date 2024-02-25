@@ -13,5 +13,12 @@
   "shouldReloadPage": "Please reload the page",
   "CancelEditProfile": "Cancel",
   "SaveProfile": "Save",
-  "ageError": "Age is out of range"
+  "ageError": "Age is out of range",
+  "ServerError": "Server error",
+  "NoData": "No data",
+  "IncorrectFirstName": "Incorrect first name",
+  "IncorrectLastName": "Incorrect last name",
+  "IncorrectAge": "Age must be an integer between 18 and 99",
+  "IncorrectCity": "Incorrect city",
+  "IncorrectUserName": "Incorrect username"
 }

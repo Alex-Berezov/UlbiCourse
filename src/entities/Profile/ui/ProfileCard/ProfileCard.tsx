@@ -25,10 +25,6 @@ const ProfileCard: FC<ProfileCardProps> = (props) => {
   const { className, data, isLoading, error, readOnly, onProfileChange } = props
   const { t } = useTranslation('profile')
 
-  console.log('====================================')
-  console.log('data >>', data)
-  console.log('====================================')
-
   const enumToSelectOptions = (enumObj: StringEnum) => {
     return Object.values(enumObj).map((value) => ({
       value,
