@@ -1,1 +1,4 @@
-{}
+{
+  "articleNotFound": "Статья не найдена",
+  "articleDoesNotExist": "Статья не существует"
+}

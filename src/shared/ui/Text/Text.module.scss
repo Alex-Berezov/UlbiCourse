@@ -5,7 +5,7 @@
 
 .text {
   font: var(--font-m);
-  color: var(--secondary-color);
+  color: var(--inverted-secondary-color);
 }
 
 .error {
@@ -15,5 +15,27 @@
 
   .text {
     color: var(--red-dark);
+  }
+}
+
+.textSize_m {
+  .title {
+    font: var(--font-l);
+  }
+
+  .text {
+    font: var(--font-m);
+    color: var(--inverted-secondary-color);
+  }
+}
+
+.textSize_l {
+  .title {
+    font: var(--font-xl);
+  }
+
+  .text {
+    font: var(--font-l);
+    color: var(--inverted-secondary-color);
   }
 }

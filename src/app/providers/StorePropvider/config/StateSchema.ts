@@ -6,6 +6,7 @@ import {
 } from '@reduxjs/toolkit'
 import { ToolkitStore } from '@reduxjs/toolkit/dist/configureStore'
 import { AxiosInstance } from 'axios'
+import { articleDetailsSchema } from 'entities/Aricle'
 import { CounterSchema } from 'entities/Counter'
 import { ProfileSchema } from 'entities/Profile'
 import { UserSchema } from 'entities/User'
@@ -19,6 +20,7 @@ export interface StateSchema {
   // Async reducers
   loginForm?: loginSchema
   profile?: ProfileSchema
+  articleDetails?: articleDetailsSchema
 }
 
 export type StateSchemaKeys = keyof StateSchema

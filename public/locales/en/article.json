@@ -1,1 +1,4 @@
-{}
+{
+  "articleNotFound": "Article not found",
+  "articleDoesNotExist": "Article does not exist"
+}
