@@ -1,4 +1,5 @@
-import { FC, memo, useEffect } from 'react'
+/* eslint-disable indent */
+import { FC, memo, useCallback, useEffect } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import DynamicModuleLoader, {
   ReducersList,
@@ -12,12 +13,16 @@ import {
   getArticleDetailsError,
   getArticleDetailsIsLoading,
 } from '../../model/selectors/articleDetails'
-import Text from 'shared/ui/Text/Text'
+import Text, { TextSize } from 'shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next'
 import Skeleton from 'shared/ui/Skeletons/Skeleton/Skeleton'
 import Avatar from 'shared/ui/Avatar/Avatar'
 import { CalendarIcon } from 'shared/assets/icons/CalendarIcon'
+import { ArticleBlock, ArticleBlockType } from '../../model/types/article'
 import { EyeIcon } from 'shared/assets/icons/EyeIcon'
+import ArticleCodeBlockComponent from '../components/ArticleCodeBlockComponent/ArticleCodeBlockComponent'
+import ArticleImageBlockComponent from '../components/ArticleImageBlockComponent/ArticleImageBlockComponent'
+import ArticleTextBlockComponent from '../components/ArticleTextBlockComponent/ArticleTextBlockComponent'
 
 import cls from './ArticleDetails.module.scss'
 
@@ -36,6 +41,22 @@ const ArticleDetails: FC<ArticleDetailsProps> = ({ className, id }) => {
   const isLoading = useSelector(getArticleDetailsIsLoading)
   const error = useSelector(getArticleDetailsError)
   const article = useSelector(getArticleDetailsData)
+
+  const renderBlock = useCallback((block: ArticleBlock) => {
+    switch (block.type) {
+      case ArticleBlockType.CODE:
+        return <ArticleCodeBlockComponent className={cls.block} block={block} />
+      case ArticleBlockType.IMAGE:
+        return (
+          <ArticleImageBlockComponent className={cls.block} block={block} />
+        )
+      case ArticleBlockType.TEXT:
+        return <ArticleTextBlockComponent className={cls.block} block={block} />
+
+      default:
+        return null
+    }
+  }, [])
 
   useEffect(() => {
     dispatch(fetchArticleById(id))
@@ -65,6 +86,7 @@ const ArticleDetails: FC<ArticleDetailsProps> = ({ className, id }) => {
           className={cls.title}
           title={article?.title}
           text={article?.subTitle}
+          size={TextSize.L}
         />
         <div className={cls.views}>
           <EyeIcon className={cls.icon} />
@@ -74,6 +96,11 @@ const ArticleDetails: FC<ArticleDetailsProps> = ({ className, id }) => {
           <CalendarIcon className={cls.icon} />
           <Text text={article?.createdAt} />
         </div>
+        {article?.blocks.map((block) => (
+          <div key={block.id} className={cls.block}>
+            {renderBlock(block)}
+          </div>
+        ))}
       </div>
     )
   }

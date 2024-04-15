@@ -24,8 +24,13 @@
     margin-bottom: 10px;
 
     .icon {
-      margin-right: 5px;
+      margin-right: 8px;
+      fill: var(--primary-color);
     }
+  }
+
+  .block {
+    margin-bottom: 20px;
   }
 }
 
