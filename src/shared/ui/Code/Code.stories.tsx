@@ -17,7 +17,7 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
-    children: `const Code: FC<CodeProps> = ({ className, children }) => {
+    text: `const Code: FC<CodeProps> = ({ className, children }) => {
   return (
     <pre>
       <code className={classNames(cls.Code, {}, [className])}>{children}</code>

@@ -1,6 +1,6 @@
 import { FC, memo } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
-import { ArticleCodeBlock } from 'entities/Aricle/model/types/article'
+import { ArticleCodeBlock } from '../../../model/types/article'
 import Code from 'shared/ui/Code/Code'
 
 import cls from './ArticleCodeBlockComponent.module.scss'
@@ -16,7 +16,7 @@ const ArticleCodeBlockComponent: FC<ArticleCodeBlockComponentProps> = ({
 }) => {
   return (
     <div className={classNames(cls.root, {}, [className])}>
-      <Code>{block.code}</Code>
+      <Code text={block.code} />
     </div>
   )
 }
