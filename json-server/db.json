@@ -14,7 +14,9 @@
       "img": "https://static.javatpoint.com/images/javascript/javascript_logo.png",
       "views": 42,
       "createdAt": "2021-08-01",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -89,13 +91,43 @@
       "id": "2",
       "text": "some comment 2",
       "articleId": "1",
-      "userId": "1"
+      "userId": "2"
     },
     {
       "id": "3",
       "text": "some comment 3",
       "articleId": "1",
       "userId": "1"
+    },
+    {
+      "text": "weweqwe",
+      "articleId": "1",
+      "userId": "1",
+      "id": "tqufc-Y"
+    },
+    {
+      "text": "asasasas",
+      "articleId": "1",
+      "userId": "1",
+      "id": "bRnzaIo"
+    },
+    {
+      "text": "trtryghgh f ghgh gfhgh fgh fgh gfhg ghf hfgh",
+      "articleId": "1",
+      "userId": "2",
+      "id": "TBnhy8m"
+    },
+    {
+      "text": "zxzcxzcxzc",
+      "articleId": "1",
+      "userId": "2",
+      "id": "qEwOTEy"
+    },
+    {
+      "text": "Hello world",
+      "articleId": "1",
+      "userId": "2",
+      "id": "FgLW5Zi"
     }
   ],
   "users": [
@@ -114,14 +146,28 @@
       "avatar": "https://www.zastavki.com/pictures/originals/2012/Computers_Anonymous_035217_.jpg"
     }
   ],
-  "profile": {
-    "firstName": "Alex",
-    "lastName": "Berezov",
-    "age": 41,
-    "currency": "EUR",
-    "country": "Germany",
-    "city": "Moscow",
-    "userName": "admin",
-    "avatar": "https://pic.rutubelist.ru/user/3b/27/3b2758ad5492a76b578f7ee072e4e894.jpg"
-  }
+  "profile": [
+    {
+      "id": "1",
+      "firstName": "Alex",
+      "lastName": "Berezov",
+      "age": 41,
+      "currency": "EUR",
+      "country": "Armenia",
+      "city": "Yerevan",
+      "userName": "admin",
+      "avatar": "https://static19.tgcnt.ru/posts/_0/14/14f62d5e291837c3473d0992659b8ce9.jpg"
+    },
+    {
+      "id": "2",
+      "firstName": "Arthur Great",
+      "lastName": "Berezov",
+      "age": 18,
+      "currency": "EUR",
+      "country": "Armenia",
+      "city": "Yerevan",
+      "userName": "user",
+      "avatar": "https://www.zastavki.com/pictures/originals/2012/Computers_Anonymous_035217_.jpg"
+    }
+  ]
 }

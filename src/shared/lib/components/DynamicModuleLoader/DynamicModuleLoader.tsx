@@ -11,11 +11,11 @@ export type ReducersList = {
 interface DynamicModuleLoaderProps {
   children: any
   reducers: ReducersList
-  removeAftrerUnmount: boolean
+  removeAftrerUnmount?: boolean
 }
 
 const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
-  const { children, reducers, removeAftrerUnmount } = props
+  const { children, reducers, removeAftrerUnmount = true } = props
   const store = useStore() as ReduxStoreWithManager
   const dispatch = useDispatch<any>()
 

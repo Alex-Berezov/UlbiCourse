@@ -6,10 +6,12 @@ import Text from 'shared/ui/Text/Text'
 
 import cls from './CommentCard.module.scss'
 import Skeleton from 'shared/ui/Skeletons/Skeleton/Skeleton'
+import { AppLink } from 'shared/ui/AppLink'
+import { RoutePath } from 'shared/config/routeConfig/routeConfig'
 
 interface CommentCardProps {
   className?: string
-  comment: Comment
+  comment?: Comment
   isLoading: boolean
 }
 
@@ -28,15 +30,22 @@ const CommentCard: FC<CommentCardProps> = (props) => {
     )
   }
 
+  if (!comment) {
+    return null
+  }
+
   return (
     <div className={classNames(cls.CommentCard, {}, [className])}>
-      <div className={cls.header}>
+      <AppLink
+        to={`${RoutePath.profile}${comment.user.id}`}
+        className={cls.header}
+      >
         {comment.user.avatar && (
           <Avatar size="30px" src={comment?.user?.avatar} />
         )}
 
         <Text className={cls.userName} title={comment?.user?.userName} />
-      </div>
+      </AppLink>
       <Text className={cls.text} text={comment?.text} />
     </div>
   )

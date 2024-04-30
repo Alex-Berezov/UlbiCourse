@@ -2,5 +2,7 @@
   "articleNotFound": "Article not found",
   "articleDoesNotExist": "Article does not exist",
   "comment": "Comment",
-  "noComments": "No comments"
+  "noComments": "No comments",
+  "addComment": "Add a comment",
+  "add": "Add"
 }

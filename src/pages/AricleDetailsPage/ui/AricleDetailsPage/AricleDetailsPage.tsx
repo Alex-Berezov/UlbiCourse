@@ -1,4 +1,4 @@
-import { FC, memo, useEffect } from 'react'
+import { FC, memo, useCallback, useEffect } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { ArticleDetails } from 'entities/Aricle'
 import { useParams } from 'react-router-dom'
@@ -16,11 +16,17 @@ import { useSelector } from 'react-redux'
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { fetchCommentsByArtileId } from '../../model/services/fetchCommentsByArtileId/fetchCommentsByArtileId'
+import { AddCommentForm } from 'features/AddCommentForm'
+import { addCommentForArticle } from 'pages/AricleDetailsPage/model/services/addCommentForArticle/addCommentForArticle'
 
 import cls from './AricleDetailsPage.module.scss'
 
 interface AricleDetailsPageProps {
   className?: string
+}
+
+const reducers: ReducersList = {
+  articleDetailsComments: ArticleDetailsCommentsReducer,
 }
 
 const AricleDetailsPage: FC<AricleDetailsPageProps> = ({ className }) => {
@@ -30,9 +36,12 @@ const AricleDetailsPage: FC<AricleDetailsPageProps> = ({ className }) => {
   const comments = useSelector(getArticleComments.selectAll)
   const commentsIsLoading = useSelector(getArticleCommentsIsLoading)
 
-  const reducers: ReducersList = {
-    articleDetailsComments: ArticleDetailsCommentsReducer,
-  }
+  const onSendComment = useCallback(
+    (text: string) => {
+      dispatch(addCommentForArticle(text))
+    },
+    [dispatch]
+  )
 
   useEffect(() => {
     dispatch(fetchCommentsByArtileId(id))
@@ -52,6 +61,7 @@ const AricleDetailsPage: FC<AricleDetailsPageProps> = ({ className }) => {
         <ArticleDetails id={id} />
         <Text className={cls.commentTitle} title={t('comment')} />
 
+        <AddCommentForm onSendComment={onSendComment} />
         <CommentList comments={comments} isLoading={commentsIsLoading} />
       </div>
     </DynamicModuleLoader>

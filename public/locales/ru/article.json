@@ -2,5 +2,7 @@
   "articleNotFound": "Статья не найдена",
   "articleDoesNotExist": "Статья не существует",
   "comment": "Комментарий",
-  "noComments": "Нет комментариев"
+  "noComments": "Нет комментариев",
+  "addCommet": "Добавить комментарий",
+  "add": "Добавить"
 }
