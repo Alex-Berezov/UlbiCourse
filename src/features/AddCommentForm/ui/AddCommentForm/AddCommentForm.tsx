@@ -5,10 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { Button } from 'shared/ui/Button'
 import { ButtonTheme } from 'shared/ui/Button/Button'
 import { useSelector } from 'react-redux'
-import {
-  getAddCommentFormError,
-  getAddCommentFormText,
-} from '../../model/selectors/AddCommentFormSelectors'
+import { getAddCommentFormText } from '../../model/selectors/AddCommentFormSelectors'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import {
   AddCommentFormActions,
@@ -36,7 +33,6 @@ const AddCommentForm: FC<AddCommentFormProps> = ({
   const { t } = useTranslation('article')
   const dispatch = useAppDispatch()
   const text = useSelector(getAddCommentFormText)
-  const error = useSelector(getAddCommentFormError)
 
   const onCommentTextChange = useCallback(
     (value: string) => {
