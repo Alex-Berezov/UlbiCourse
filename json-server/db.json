@@ -14,9 +14,8 @@
       "img": "https://static.javatpoint.com/images/javascript/javascript_logo.png",
       "views": 42,
       "createdAt": "2021-08-01",
-      "type": [
-        "IT"
-      ],
+      "userId": "1",
+      "type": ["IT"],
       "blocks": [
         {
           "id": "1",

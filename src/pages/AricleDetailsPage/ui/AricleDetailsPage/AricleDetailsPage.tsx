@@ -1,7 +1,7 @@
 import { FC, memo, useCallback, useEffect } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { ArticleDetails } from 'entities/Aricle'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Text from 'shared/ui/Text/Text'
 import { CommentList } from 'entities/Comment'
@@ -17,7 +17,10 @@ import { getArticleCommentsIsLoading } from '../../model/selectors/comments'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { fetchCommentsByArtileId } from '../../model/services/fetchCommentsByArtileId/fetchCommentsByArtileId'
 import { AddCommentForm } from 'features/AddCommentForm'
-import { addCommentForArticle } from 'pages/AricleDetailsPage/model/services/addCommentForArticle/addCommentForArticle'
+import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle'
+import { Button } from 'shared/ui/Button'
+import { ButtonTheme } from 'shared/ui/Button/Button'
+import { RoutePath } from 'shared/config/routeConfig/routeConfig'
 
 import cls from './AricleDetailsPage.module.scss'
 
@@ -35,6 +38,7 @@ const AricleDetailsPage: FC<AricleDetailsPageProps> = ({ className }) => {
   const { id } = useParams<{ id: string }>()
   const comments = useSelector(getArticleComments.selectAll)
   const commentsIsLoading = useSelector(getArticleCommentsIsLoading)
+  const navigate = useNavigate()
 
   const onSendComment = useCallback(
     (text: string) => {
@@ -47,6 +51,10 @@ const AricleDetailsPage: FC<AricleDetailsPageProps> = ({ className }) => {
     dispatch(fetchCommentsByArtileId(id))
   }, [dispatch, id])
 
+  const onBackToList = useCallback(() => {
+    navigate(RoutePath.articles)
+  }, [navigate])
+
   if (!id) {
     return (
       <div className={classNames(cls.AricleDetailsPage, {}, [className])}>
@@ -58,6 +66,9 @@ const AricleDetailsPage: FC<AricleDetailsPageProps> = ({ className }) => {
   return (
     <DynamicModuleLoader reducers={reducers} removeAftrerUnmount>
       <div className={classNames(cls.AricleDetailsPage, {}, [className])}>
+        <Button theme={ButtonTheme.OUTLINED} onClick={onBackToList}>
+          {t('back')}
+        </Button>
         <ArticleDetails id={id} />
         <Text className={cls.commentTitle} title={t('comment')} />
 

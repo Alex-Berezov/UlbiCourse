@@ -1,13 +1,13 @@
 /* eslint-disable max-len */
-import { FC, memo } from 'react'
-import { classNames } from 'shared/lib/classNames/classNames'
-import cls from './ArticlesPage.module.scss'
-import { Article, ArticleList } from 'entities/Aricle'
-import { ArticleView } from 'entities/Aricle/model/types/article'
+import type { Meta, StoryObj } from '@storybook/react'
 
-interface ArticlesPageProps {
-  className?: string
-}
+import ArticleListItem from './ArticleListItem'
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator'
+import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator'
+import { Theme } from 'app/providers/ThemeProviders'
+import { withRouter } from 'storybook-addon-react-router-v6'
+import { StyleDecorator } from 'shared/config/storybook/StyleDecorator/StyleDecorator'
+import { Article, ArticleView } from '../../model/types/article'
 
 const article = {
   id: '1',
@@ -86,19 +86,27 @@ const article = {
   ],
 } as unknown as Article
 
-const ArticlesPage: FC<ArticlesPageProps> = ({ className }) => {
-  return (
-    <div className={classNames(cls.ArticlesPage, {}, [className])}>
-      <ArticleList
-        articles={new Array(16).fill(0).map((item, i) => ({
-          ...article,
-          id: article.id,
-        }))}
-        view={ArticleView.LIST}
-        isLoaing
-      />
-    </div>
-  )
+const meta = {
+  title: 'entities/Article/ArticleListItem',
+  component: ArticleListItem,
+  decorators: [withRouter, StyleDecorator],
+} satisfies Meta<typeof ArticleListItem>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const GRID: Story = {
+  args: {
+    view: ArticleView.GRID,
+    article,
+  },
+  decorators: [StoreDecorator({}), ThemeDecorator(Theme.LIGHT)],
 }
 
-export default memo(ArticlesPage)
+export const LIST: Story = {
+  args: {
+    view: ArticleView.LIST,
+    article,
+  },
+  decorators: [StoreDecorator({}), ThemeDecorator(Theme.LIGHT)],
+}
