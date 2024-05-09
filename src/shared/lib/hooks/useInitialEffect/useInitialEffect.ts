@@ -1,10 +1,13 @@
 import { useEffect } from 'react'
 
-export function useInitialEffect(callback: () => void): void {
+export function useInitialEffect(
+  callback: () => void,
+  dependencies: any
+): void {
   useEffect(() => {
     if (__PROJECT__ === 'storybook') {
       callback()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [...dependencies])
 }
