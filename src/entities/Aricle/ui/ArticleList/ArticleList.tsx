@@ -18,20 +18,20 @@ interface ArticleListProps {
 const ArticleList: FC<ArticleListProps> = (props) => {
   const { className, articles, isLoaing, view = ArticleView.GRID } = props
 
+  // if (isLoaing) {
+  //   return (
+  //     <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
+  //       {new Array(view === ArticleView.LIST ? 3 : 12)
+  //         .fill(0)
+  //         .map((_, index) => (
+  //           <ArticleListItemSkeleton key={index} view={view} />
+  //         ))}
+  //     </div>
+  //   )
+  // }
+
   const renderArticle = (article: Article) => {
     return <ArticleListItem key={article.id} article={article} view={view} />
-  }
-
-  if (isLoaing) {
-    return (
-      <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>
-        {new Array(view === ArticleView.LIST ? 3 : 12)
-          .fill(0)
-          .map((_, index) => (
-            <ArticleListItemSkeleton key={index} view={view} />
-          ))}
-      </div>
-    )
   }
 
   return (
@@ -39,6 +39,18 @@ const ArticleList: FC<ArticleListProps> = (props) => {
       {articles.length > 0
         ? articles.map((article) => renderArticle(article))
         : null}
+
+      {isLoaing && (
+        <div
+          className={classNames(cls.ArticleList, {}, [className, cls[view]])}
+        >
+          {new Array(view === ArticleView.LIST ? 3 : 12)
+            .fill(0)
+            .map((_, index) => (
+              <ArticleListItemSkeleton key={index} view={view} />
+            ))}
+        </div>
+      )}
     </div>
   )
 }

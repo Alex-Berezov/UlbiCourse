@@ -23,6 +23,7 @@ import ProfilePageHeader from './ProfilePageHeader/ProfilePageHeader'
 import Text, { TextTheme } from 'shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next'
 import { useParams } from 'react-router-dom'
+import PageWrapper from 'shared/ui/PageWrapper/PageWrapper'
 
 const reducers: ReducersList = {
   profile: profileReducer,
@@ -69,7 +70,7 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAftrerUnmount>
-      <div className={classNames(cls.ProfilePage, {}, [className])}>
+      <PageWrapper className={classNames(cls.ProfilePage, {}, [className])}>
         <ProfilePageHeader />
         {validateErrors?.length &&
           validateErrors.map((err) => (
@@ -86,7 +87,7 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
           readOnly={readOnly}
           onProfileChange={onProfileChange}
         />
-      </div>
+      </PageWrapper>
     </DynamicModuleLoader>
   )
 }

@@ -1,4 +1,4 @@
-import { FC, memo, useEffect } from 'react'
+import { FC, memo, useCallback, useEffect } from 'react'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { ArticleList, ArticleView } from 'entities/Aricle'
 import DynamicModuleLoader, {
@@ -20,6 +20,8 @@ import {
 import { ArticleViewSelector } from 'features/ArticleViewSelector'
 
 import cls from './ArticlesPage.module.scss'
+import PageWrapper from 'shared/ui/PageWrapper/PageWrapper'
+import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage'
 
 interface ArticlesPageProps {
   className?: string
@@ -37,24 +39,31 @@ const ArticlesPage: FC<ArticlesPageProps> = ({ className }) => {
   const view = useSelector(getArticlesPageView)
 
   useEffect(() => {
-    dispatch(fetchArticlesList())
     dispatch(articlesPageActions.initState())
+    dispatch(fetchArticlesList({ page: 1 }))
+  }, [dispatch])
+
+  const onViewChange = (view: ArticleView) => {
+    dispatch(articlesPageActions.setView(view))
+  }
+
+  const onLoadNextPart = useCallback(() => {
+    dispatch(fetchNextArticlesPage())
   }, [dispatch])
 
   if (error) {
     return <div>{error}</div>
   }
 
-  const onViewChange = (view: ArticleView) => {
-    dispatch(articlesPageActions.setView(view))
-  }
-
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <div className={classNames(cls.ArticlesPage, {}, [className])}>
+      <PageWrapper
+        className={classNames(cls.ArticlesPage, {}, [className])}
+        onScrollEnd={onLoadNextPart}
+      >
         <ArticleViewSelector view={view} onViewChange={onViewChange} />
         <ArticleList articles={articles} view={view} isLoaing={isLoading} />
-      </div>
+      </PageWrapper>
     </DynamicModuleLoader>
   )
 }

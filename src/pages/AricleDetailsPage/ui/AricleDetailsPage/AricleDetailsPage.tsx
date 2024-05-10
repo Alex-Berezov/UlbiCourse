@@ -23,6 +23,7 @@ import { ButtonTheme } from 'shared/ui/Button/Button'
 import { RoutePath } from 'shared/config/routeConfig/routeConfig'
 
 import cls from './AricleDetailsPage.module.scss'
+import PageWrapper from 'shared/ui/PageWrapper/PageWrapper'
 
 interface AricleDetailsPageProps {
   className?: string
@@ -57,15 +58,19 @@ const AricleDetailsPage: FC<AricleDetailsPageProps> = ({ className }) => {
 
   if (!id) {
     return (
-      <div className={classNames(cls.AricleDetailsPage, {}, [className])}>
+      <PageWrapper
+        className={classNames(cls.AricleDetailsPage, {}, [className])}
+      >
         {t('articleNotFound')}
-      </div>
+      </PageWrapper>
     )
   }
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAftrerUnmount>
-      <div className={classNames(cls.AricleDetailsPage, {}, [className])}>
+      <PageWrapper
+        className={classNames(cls.AricleDetailsPage, {}, [className])}
+      >
         <Button theme={ButtonTheme.OUTLINED} onClick={onBackToList}>
           {t('back')}
         </Button>
@@ -74,7 +79,7 @@ const AricleDetailsPage: FC<AricleDetailsPageProps> = ({ className }) => {
 
         <AddCommentForm onSendComment={onSendComment} />
         <CommentList comments={comments} isLoading={commentsIsLoading} />
-      </div>
+      </PageWrapper>
     </DynamicModuleLoader>
   )
 }
